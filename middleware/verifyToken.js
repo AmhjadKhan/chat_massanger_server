@@ -1,4 +1,5 @@
 import { errorHandler } from "../utils/error.js"
+import jwt from 'jsonwebtoken'
 
 export const isAuthenticate = async(req,res,next) =>{
     try{
