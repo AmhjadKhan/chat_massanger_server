@@ -18,6 +18,11 @@ app.get('/', (req, res) => {
   res.send('this is chatapplication server running')
 })
 
+// import routes 
+import authRoutes from './routes/auth.routes.js'
+
+app.use("./api/auth", authRoutes)
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
 })
