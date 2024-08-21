@@ -2,6 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+
+import {server, app} from './socket/Socket.js'
+
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL).then(()=>{
@@ -10,7 +13,6 @@ mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log(erro)
 });
 
-const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(express.json())
@@ -28,13 +30,14 @@ import authRoutes from './routes/auth.routes.js'
 import messageRoute from './routes/massage.routes.js'
 import UserRoute from './routes/user.routes.js'
 
+
 app.use("/api/auth", authRoutes)
 app.use("/api/messages", messageRoute)
 app.use("/api/users", UserRoute)
 
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+server.listen(PORT, () => {
+  console.log(`Example app listening on port + ${PORT}`)
 })
 
 // error handle 
