@@ -36,9 +36,9 @@ app.use("/api/messages", messageRoute)
 app.use("/api/users", UserRoute)
 
 
-server.listen(PORT, () => {
-  console.log(`Example app listening on port + ${PORT}`)
-})
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // error handle 
 app.use((err,req,res,next ) =>{
